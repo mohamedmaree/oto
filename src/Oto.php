@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Http;
 class Oto {
     
     // $itemDetails = ['weight' => 50 ,'totalDue' => 0 ,'originCity' => '','destinationCity' => ''];
-    public static function checkOTODeliveryFee($itemDetails = []){
+    public static function checkDeliveryFee($itemDetails = []){
         $data = [
           'weight'            => $itemDetails['weight'],
           'totalDue'          => $itemDetails['totalDue'],
