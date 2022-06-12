@@ -1,0 +1,28 @@
+{
+    "name": "maree/oto",
+    "description": "package to integrate with oto shipping company api",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "mohamed maree",
+            "email": "m7mdmaree26@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Maree\\Oto\\" : "src/",
+            "Maree\\Oto\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Maree\\Oto\\OtoServiceProvider"
+            ]
+        }
+    }       
+}
+
