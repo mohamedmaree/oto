@@ -14,7 +14,7 @@ class Oto {
           'destinationCity'   => $itemDetails['destinationCity'],
         ];
 
-        $url = config('oto.mode') == 'live' ? config('fawry.live_urls')['check_delivery_fee'] : config('fawry.test_urls')['check_delivery_fee'];
+        $url = config('oto.mode') == 'live' ? config('oto.live_urls')['check_delivery_fee'] : config('oto.test_urls')['check_delivery_fee'];
         $response = Http::withHeaders([
             'Accept'        => 'application/json',
             'Content-Type'  => 'application/json',
@@ -55,7 +55,7 @@ class Oto {
           "items" => $items
         ];
 
-        $url = config('oto.mode') == 'live' ? config('fawry.live_urls')['create_order'] : config('fawry.test_urls')['create_order'];
+        $url = config('oto.mode') == 'live' ? config('oto.live_urls')['create_order'] : config('oto.test_urls')['create_order'];
         $response = Http::withHeaders([
             'Accept'        => 'application/json',
             'Content-Type'  => 'application/json',
@@ -73,7 +73,7 @@ class Oto {
           'deliveryOptionId'   => $deliveryOptionId,
         ];
 
-        $url = config('oto.mode') == 'live' ? config('fawry.live_urls')['create_shipment'] : config('fawry.test_urls')['create_shipment'];
+        $url = config('oto.mode') == 'live' ? config('oto.live_urls')['create_shipment'] : config('oto.test_urls')['create_shipment'];
         $response = Http::withHeaders([
             'Accept'        => 'application/json',
             'Content-Type'  => 'application/json',
