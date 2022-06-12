@@ -22,7 +22,7 @@ class Oto {
         ])->post($url, $data);
 
         $responseResult = json_decode($response->getBody()->getContents(), true);
-        return $responseResult;
+        return json_encode($responseResult);
     }
     
     // $orderData   = ['orderId' => 1 ,'payment_method' => 'paid', 'amount' => '40','amount_due' => 0,'packageCount' => 10,'packageWeight' => 1 , 'orderDate' => '2022-06-12 22:30'];
@@ -33,7 +33,7 @@ class Oto {
 
 
         $data = [
-          "orderId"           => $orderData['orderData'],
+          "orderId"           => $orderData['orderId'],
           "payment_method"    => $orderData['payment_method'],
           "amount"            => $orderData['amount'],
           "amount_due"        => $orderData['amount_due'],
@@ -45,7 +45,7 @@ class Oto {
               "name"      => $customeData['name'],
               "email"     => $customeData['email'],
               "mobile"    => $customeData['mobile'],
-              "address"   => $addressData['addressData'],
+              "address"   => $addressData['address'],
               "district"  => $addressData['district'],
               "city"      => $addressData['city'],
               "country"   => $addressData['country'],
@@ -63,7 +63,7 @@ class Oto {
         ])->post($url, $data);
 
         $responseResult = json_decode($response->getBody()->getContents(), true);
-        return $responseResult;
+        return json_encode($responseResult);
 
     }
 
@@ -81,7 +81,7 @@ class Oto {
         ])->post($url, $data);
 
         $responseResult = json_decode($response->getBody()->getContents(), true);
-        return $responseResult;
+        return json_encode($responseResult);
 
     }
 
