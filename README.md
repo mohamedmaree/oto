@@ -13,11 +13,20 @@ php artisan vendor:publish --provider="Maree\Oto\OtoServiceProvider" --tag="oto"
 ```
 then change your oto config from config/oto.php file
 ```php
-    "access_token"        => "", 
+    "refresh_token"        => "", //take it from oto company
     "mode"                => "test",//live
     "currency"            => "SAR" ,
 ```
 ## Usage
+
+## Get Available Cities
+
+```php
+use Maree\Oto\Oto;
+    $response = Oto::availableCities($limit , $page); 
+
+```
+
 
 ## Check Delivery Fee
 
@@ -42,6 +51,24 @@ use Maree\Oto\Oto;
 
 ```
 
+## Cancel Order
+
+```php
+use Maree\Oto\Oto;
+
+    $response = Oto::cancelOrder($orderId);
+
+```
+
+## get Order status
+
+```php
+use Maree\Oto\Oto;
+
+    $response = Oto::orderStatus($orderId);
+
+```
+
 
 ## Create Shipment
 
@@ -49,6 +76,16 @@ use Maree\Oto\Oto;
 use Maree\Oto\Oto;
 
     $response = Oto::createShipment($orderId, $deliveryOptionId);
+
+
+```
+
+## Create return Shipment
+
+```php
+use Maree\Oto\Oto;
+
+    $response = Oto::createReturnShipment($orderId);
 
 
 ```
