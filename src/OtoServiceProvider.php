@@ -13,8 +13,8 @@ class OtoServiceProvider extends ServiceProvider
     public function register()
     {
         $this->publishes([
-            __DIR__.'/config/oto.php' => config_path('oto.php'),
-        ],'oto');
+            __DIR__ . '/config/oto.php' => config_path('oto.php'),
+        ], 'oto');
     }
 
     /**
@@ -25,7 +25,7 @@ class OtoServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->mergeConfigFrom(
-            __DIR__.'/config/oto.php', 'oto'
+            __DIR__ . '/config/oto.php', 'oto'
         );
     }
 }
