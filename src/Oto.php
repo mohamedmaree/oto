@@ -41,6 +41,9 @@ class Oto
         Oto::refreshToken();
         $data = [
             'weight'          => $itemDetails['weight'],
+            'height'          => $itemDetails['height'],
+            'width'           => $itemDetails['width'],
+            'length'          => $itemDetails['length'],
             'totalDue'        => $itemDetails['totalDue'],
             'originCity'      => $itemDetails['originCity'],
             'destinationCity' => $itemDetails['destinationCity'],
@@ -61,31 +64,47 @@ class Oto
     // $customeData = ['name' =>'mohamed maree' ,'email' => 'm7mdmaree26@gmail.com' , 'mobile' => '010027*****'];
     // $addressData = ['address' => '20 ,maree street, almehalla alkubra,Saudi Arabia','district' => 'maree district' ,'city' => 'almehalla' ,'country' => 'SA' ,'lat' => '30.837645','lng' => '30.23456'];
     // $items       = ["productId" => '123', "name"      => 'book', "price"     => '12', "rowTotal"  => '15', "taxAmount" => '3', "quantity"  => '2', "sku"  => 'arabic_book', "image"     => ''];
+
     public static function createOrder($orderData = [], $customeData = [], $addressData = [], $items = [])
     {
         Oto::refreshToken();
 
         $data = [
-            "orderId"        => $orderData['orderId'],
-            "payment_method" => $orderData['payment_method'],
-            "amount"         => $orderData['amount'],
-            "amount_due"     => $orderData['amount_due'],
-            "currency"       => config('oto.currency'),
-            "packageCount"   => $orderData['packageCount'],
-            "packageWeight"  => $orderData['packageWeight'],
-            "orderDate"      => $orderData['orderDate'],
-            "customer"       => [
-                "name"     => $customeData['name'],
-                "email"    => $customeData['email'],
-                "mobile"   => $customeData['mobile'],
-                "address"  => $addressData['address'],
-                "district" => $addressData['district'],
-                "city"     => $addressData['city'],
-                "country"  => $addressData['country'],
-                "lat"      => $addressData['lat'],
-                "lon"      => $addressData['lng'],
+            "orderId"            => $orderData['orderId'],
+            "pickupLocationCode" => $orderData['pickupLocationCode'],
+            "createShipment"     => $orderData['createShipment'],
+            "deliveryOptionId"   => $orderData['deliveryOptionId'],
+            "payment_method"     => $orderData['payment_method'],
+            "amount"             => $orderData['amount'],
+            "amount_due"         => $orderData['amount_due'],
+            "currency"           => config('oto.currency'),
+            "customsValue"       => $orderData['customsValue'],
+            "customsCurrency"    => config('oto.currency'),
+            "packageCount"       => $orderData['packageCount'],
+            "packageWeight"      => $orderData['packageWeight'],
+            "boxWidth"           => $orderData['boxWidth'],
+            "boxLength"          => $orderData['boxLength'],
+            "boxHeight"          => $orderData['boxHeight'],
+            "orderDate"          => $orderData['orderDate'],
+            "deliverySlotDate"   => $orderData['deliverySlotDate'],
+            "deliverySlotTo"     => $orderData['deliverySlotTo'],
+            "deliverySlotFrom"   => $orderData['deliverySlotFrom'],
+            "senderName"         => $orderData['senderName'],
+            "customer"           => [
+                "name"       => $customeData['name'],
+                "email"      => $customeData['email'],
+                "mobile"     => $customeData['mobile'],
+                "address"    => $addressData['address'],
+                "district"   => $addressData['district'],
+                "city"       => $addressData['city'],
+                "country"    => $addressData['country'],
+                "lat"        => $addressData['lat'],
+                "lon"        => $addressData['lng'],
+                "postcode"   => $addressData['postcode'],
+                "refID"      => $addressData['refID'],
+                "W3WAddress" => $addressData['W3WAddress'],
             ],
-            "items"          => $items,
+            "items"              => $items,
         ];
 
         $url      = config('oto.mode') == 'live' ? config('oto.live_urls')['create_order'] : config('oto.test_urls')['create_order'];
@@ -266,5 +285,4 @@ class Oto
 
         return json_encode($responseResult);
     }
-
 }
